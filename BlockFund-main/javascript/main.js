@@ -1,6 +1,6 @@
 // LOGIN MODAL CODE
 var modal = document.getElementById("loginModal");
-var btn = document.getElementById("b4");                            // Get the button that opens the modal
+var btn = document.getElementById("b4");                            // Geet the button that opens the modal
 var span = document.getElementsByClassName("close-button")[0];      // Get the element that closes the modal
 
 btn.addEventListener('click', () => modal.style.display = "block");
