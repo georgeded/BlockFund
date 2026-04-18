@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "build": "cd BlockFund-main/backend && npm install"
+  }
+}
