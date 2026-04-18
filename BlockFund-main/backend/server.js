@@ -8,27 +8,33 @@ const app = express();
 const port = 8080;
 const SALT_ROUNDS = 10;
 
-const chatFilePath = path.join(__dirname, '../backend/data/chat', 'chat.json');
-const chatBackupFilePath = path.join(__dirname, '../backend/data/chat', 'chat_backup.json');
-const usersFilePath = path.join(__dirname, '../backend/data/login', 'users.json');
+// __dirname = <repo>/BlockFund-main/backend
+// Static assets live two levels up at the repo root
+const ROOT = path.join(__dirname, '../../');
+
+console.log('Looking for HTML at:', path.join(ROOT, 'html/index.html'));
+
+const chatFilePath = path.join(__dirname, 'data/chat', 'chat.json');
+const chatBackupFilePath = path.join(__dirname, 'data/chat', 'chat_backup.json');
+const usersFilePath = path.join(__dirname, 'data/login', 'users.json');
 
 app.use(express.json());
 
-// Serve static files from the root of the project
-app.use('/css', express.static(path.join(__dirname, '../css')));
-app.use('/javascript', express.static(path.join(__dirname, '../javascript')));
-app.use('/images', express.static(path.join(__dirname, '../images')));
-app.use('/html', express.static(path.join(__dirname, '../html')));
-app.use('/documentation', express.static(path.join(__dirname, '../documentation')));
+// Serve static files from the repo root
+app.use('/css', express.static(path.join(ROOT, 'css')));
+app.use('/javascript', express.static(path.join(ROOT, 'javascript')));
+app.use('/images', express.static(path.join(ROOT, 'images')));
+app.use('/html', express.static(path.join(ROOT, 'html')));
+app.use('/documentation', express.static(path.join(ROOT, 'documentation')));
 
 // Serve the html files
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, '../html', 'index.html')));
-app.get('/html/Learn.html', (req, res) => res.sendFile(path.join(__dirname, '../html', 'Learn.html')));
-app.get('/html/Participate.html', (req, res) => res.sendFile(path.join(__dirname, '../html', 'Participate.html')));
-app.get('/html/Use.html', (req, res) => res.sendFile(path.join(__dirname, '../html', 'Use.html')));
-app.get('/html/News.html', (req, res) => res.sendFile(path.join(__dirname, '../html', 'News.html')));
-app.get('/html/Chat.html', (req, res) => res.sendFile(path.join(__dirname, '../html', 'Chat.html')));
-app.get('/html/Graphs.html', (req, res) => res.sendFile(path.join(__dirname, '../html', 'Graphs.html')));
+app.get('/', (req, res) => res.sendFile(path.join(ROOT, 'html', 'index.html')));
+app.get('/html/Learn.html', (req, res) => res.sendFile(path.join(ROOT, 'html', 'Learn.html')));
+app.get('/html/Participate.html', (req, res) => res.sendFile(path.join(ROOT, 'html', 'Participate.html')));
+app.get('/html/Use.html', (req, res) => res.sendFile(path.join(ROOT, 'html', 'Use.html')));
+app.get('/html/News.html', (req, res) => res.sendFile(path.join(ROOT, 'html', 'News.html')));
+app.get('/html/Chat.html', (req, res) => res.sendFile(path.join(ROOT, 'html', 'Chat.html')));
+app.get('/html/Graphs.html', (req, res) => res.sendFile(path.join(ROOT, 'html', 'Graphs.html')));
 
 // Return public API keys to the frontend
 app.get('/api/config', (req, res) => {
