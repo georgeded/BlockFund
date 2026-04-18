@@ -57,10 +57,11 @@ html {
     scroll-behavior: smooth;
   }
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Inter', sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
-    font-size: var(--eth-fontSizes-md);
+    font-size: 1rem;
+    line-height: 1.6;
     margin: 0;
 }
 #top, .container {
@@ -95,10 +96,10 @@ body {
 
 #login {
     display: flex !important;
-    justify-content: flex-end; /* Aligns items to the right */
+    justify-content: flex-end;
     align-items: center;
-    width: 5%;  /* Adjusted to take up the remaining space */
-    height: 100%; /* Full height of the parent */	
+    width: auto;
+    height: 100%;
 }
 @keyframes fadeIn {
     from {
@@ -125,10 +126,10 @@ body {
     display: block;
     margin: 5% auto;
     border-radius: 25px;
-    width: 25%; /* Could be more or less, depending on screen size */
-    height: 70%;
-    
-    border: 2px solid black;
+    width: min(420px, 92vw);
+    height: auto;
+    max-height: 88vh;
+    overflow: auto;
     background-color: var(--modal-background-color);
     border: 2px solid var(--text-color);
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 var(--box-shadow-color);
@@ -170,7 +171,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: -3%;
+    margin-top: 0;
 }
 #cont img{
     margin-top: 6%;
@@ -182,34 +183,34 @@ form {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: -6%;
-    margin-bottom: 10%;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
 }
 form label{
     font-size: 0.9rem;
-    margin-top: 20%;
+    margin-top: 1rem;
 }
 form input {
-    width: 100%; /* Adjusted width */
-    padding: 2%; /* Uniform padding */
-    margin-top: 1%; /* Adjusts the space between the elements */
-    border: 1px solid #ccc; /* Add a border */
-    border-radius: 25px; /* Rounded corners */
+    width: 100%;
+    padding: 0.6rem 0.875rem;
+    margin-top: 0.25rem;
+    border: 1px solid #ccc;
+    border-radius: 25px;
 }
 form button:hover {
-    background-color: rgba(55, 64, 144, 0.511); /* Add a background color on hover */
+    background-color: rgba(55, 64, 144, 0.511);
     transform: scale(1.09);
 }
 form button {
-    width: 40%; /* Adjusted width */
-    padding: 2%; /* Uniform padding */
-    border: none; /* Remove the border */
-    background-color: rgba(37, 37, 163, 0.848); /* Add a background color */
-    color: white; /* Text color */
-    border-radius: 4px; /* Rounded corners */
-    cursor: pointer; /* Add a pointer cursor on hover */
+    width: auto;
+    padding: 0.6rem 1.5rem;
+    border: none;
+    background-color: rgba(37, 37, 163, 0.848);
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
     transition: transform 0.8s ease;
-    margin-top: 2%;
+    margin-top: 0.75rem;
     box-shadow: var(--box-shadow-color);
 }
 form label, form input, form button {
@@ -230,7 +231,7 @@ form label, form input, form button {
     color: #aaa;
     float: right;
     top: 0;
-    margin-right: 3%;
+    margin-right: 0.75rem;
     font-size: 28px;
     font-weight: bold;
 }
@@ -255,13 +256,14 @@ form label, form input, form button {
     text-align: center;
     box-shadow: var(--box-shadow-color);
     border: none;
-    padding: 2%; /* Uniform padding */
+    padding: 0.6rem 1.5rem;
     font-size: 1rem;
-    border-radius: 0;
+    border-radius: 6px;
     align-items: center;
     transition: transform 0.8s ease;
     display: block;
-    margin-bottom: 5%;
+    margin-bottom: 1rem;
+    cursor: pointer;
 }
 #logoutButton:hover {
     background-color: rgba(55, 64, 144, 0.511);
@@ -271,23 +273,22 @@ form label, form input, form button {
 }
 #switch {
     display: flex;
-    align-items: center; /* Keeps the toggle vertically aligned */
-    position: relative; /* Allows precise positioning using left/right/top/bottom */
-    left: 2%; /* Moves the switch more to the left */
-    z-index: 10; /* Ensures it's not hidden behind other elements */
-    margin-right: 3%;
+    align-items: center;
+    position: relative;
+    left: 0;
+    z-index: 10;
+    margin-right: 0.75rem;
 }
 
 #lbl {
-    /* Updated label styles for the dark mode switch */
     position: relative;
     display: flex;
     cursor: pointer;
-    width: 7vw;  /* Adjust width relative to the viewport width */
-    height: 3.12vw; /* Maintain aspect ratio */
+    width: 56px;
+    height: 28px;
     background: #ebebeb;
     border-radius: 200px;
-    box-shadow: inset 0px 0.5vw 1.5vw rgba(0,0,0,0.4), inset 0px -0.5vw 1.5vw rgba(255,255,255,0.4);
+    box-shadow: inset 0px 4px 12px rgba(0,0,0,0.4), inset 0px -4px 12px rgba(255,255,255,0.4);
 }
 
 #darkmode-toggle {
@@ -301,7 +302,7 @@ form label, form input, form button {
 }
 
 #darkmode-toggle:checked + #lbl:after {
-    left: calc(100% - 3.25vw); /* Position the ball at the end */
+    left: calc(100% - 28px);
     background: linear-gradient(180deg, #777, #3a3a3a);
 }
 
@@ -311,23 +312,23 @@ form label, form input, form button {
 
 #lbl:after {
     content: "";
-    width: 3.25vw; /* Adjust the size of the ball */
+    width: 28px;
     height: 100%;
     position: relative;
-    top: 50%; /* Center vertically */
+    top: 50%;
     left: 0;
     background: linear-gradient(180deg, #ffcc89, #d8860b);
     border-radius: 50%;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-    transform: translateY(-50%); /* Center the ball vertically */
+    transform: translateY(-50%);
 }
 
 #lbl svg {
     position: absolute;
-    width: 2vw; /* Adjust the size of the icons */
-    height: 2vw; /* Adjust the size of the icons */
-    top: 50%; /* Center vertically */
-    transform: translateY(-50%); /* Center the icons vertically */
+    width: 16px;
+    height: 16px;
+    top: 50%;
+    transform: translateY(-50%);
     z-index: 100;
 }
 
@@ -357,13 +358,15 @@ form label, form input, form button {
 
 #b1, #b2, #b3, #b5{
     background-color: rgba(255, 255, 255, 0);
-    padding: 1.4%; /* Uniform padding */
+    padding: 0.5rem 0.9rem;
     border: none;
-    margin-right: 11.8%;
+    margin-right: 0.5rem;
     color: var(--text-color);
     border-radius: 100px;
     font-size: 1rem;
     transition: transform 0.8s ease;
+    cursor: pointer;
+    white-space: nowrap;
 }
 #b4 {
     background-color: rgba(37, 37, 163, 0.848);
@@ -371,12 +374,14 @@ form label, form input, form button {
     text-align: center;
     box-shadow: var(--box-shadow-color);
     border: none;
-    padding: 15%; /* Uniform padding */
+    padding: 0.5rem 1.2rem;
     font-size: 1rem;
-    border-radius: 0;
+    border-radius: 6px;
     align-items: center;
     transition: transform 0.8s ease;
     display: block;
+    cursor: pointer;
+    white-space: nowrap;
 }
 #b1:hover, #b2:hover, #b3:hover, #b4:hover, #b5:hover{
     background-color: rgba(55, 64, 144, 0.511);
@@ -386,9 +391,9 @@ form label, form input, form button {
 }
 
 #profile{
-    height: 25%;
-    max-width: 17%;
-    padding: 1%;
+    height: auto;
+    max-width: none;
+    padding: 0.4rem 0.75rem;
     justify-content: center;
     align-items: center;
     transition: transform 0.8s ease;
@@ -402,8 +407,8 @@ form label, form input, form button {
     justify-content: space-between;
     font-size: 0.8rem;
     border-radius: 25px;
-    height: 150%;
-    padding: 1%;
+    height: auto;
+    padding: 0.4rem 0.6rem;
     width: 70%;
     transition: transform 0.5s ease;
     box-shadow: var(--box-shadow-color);
@@ -531,9 +536,10 @@ form label, form input, form button {
 
 #topcontents{
     display: flex;
-    align-items: left;
+    align-items: center;
     text-align: left;
-    width: 40vw;
+    flex: 1;
+    width: auto;
     justify-content: start;
 }
 #logo {
@@ -589,20 +595,16 @@ form label, form input, form button {
     fill: #0A0A12;
 }
 #welcome{
-    margin: auto;
+    margin: 2.5rem auto 2rem;
     text-align: center;
-    width: 40%;
-    margin-bottom: 4%;
-    margin-top: 3%;
+    width: min(600px, 90%);
 }
 #welcomemsg{
-    font-size: 3rem;
+    font-size: clamp(2rem, 5vw, 3rem);
     text-align: center;
-    margin-top: 10%;
-    margin: auto;
-    font-family: sans-serif;
+    margin: 0 auto 1rem;
+    font-family: 'Inter', sans-serif;
     font-weight: 700;
-    margin-bottom: 4%;
 }
 #infowlcm{
     font-size: 1.25rem;
@@ -613,9 +615,8 @@ form label, form input, form button {
     line-height: 1.5;
 }
 #getStartedMain{
-    margin-top: 7%;
+    margin: 4rem 0 5rem;
     width: 100%;
-    margin-bottom: 10%;
     display: flex;
     flex-direction: row;
 }
@@ -626,19 +627,17 @@ form label, form input, form button {
     width: 100%;
     height: 60%;
     padding: 2%;
-    font-family: sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 #img1{
     width: 100%;
     height: 50vh;
 }
 #getStartedmsg{
-    font-size: 2rem;
-    margin-top: 10%;
-    margin: auto;
-    font-family: sans-serif;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    margin: 0 auto 1rem;
+    font-family: 'Inter', sans-serif;
     font-weight: 700;
-    margin-bottom: 4%;
 }
 #infoGetStarted{
     font-size: 1.25rem;
@@ -656,8 +655,7 @@ form label, form input, form button {
     align-items: top;
     text-align: center;
     width: 100%;
-    margin-top: 7%;
-    margin-bottom: 7%;
+    margin: 4rem 0;
 }
 #diveInTopics .image-container{
     display: flex;
@@ -777,7 +775,7 @@ form label, form input, form button {
 #boxinfo h2{
     font-size: 2rem;
     text-align: left;
-    font-family: sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 700;
     margin: 0 0 0.75rem 0;
     color: var(--text-color);
@@ -1002,15 +1000,15 @@ a:hover {
 
 #profileModalContent {
     display: block;
-    margin: 5% auto; /* 15% from the top and centered */
-    border-radius: 5vh;
-    width: 25%; /* Could be more or less, depending on screen size */
-    height: 70%;
-    border: 2px solid black;
+    margin: 5% auto;
+    border-radius: 25px;
+    width: min(420px, 92vw);
+    height: auto;
+    max-height: 88vh;
+    overflow: auto;
     background-color: var(--modal-background-color);
     border: 2px solid var(--text-color);
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 var(--box-shadow-color);
-    /* border: 2px solid yellow; */
     box-sizing: border-box;
 }
 
