@@ -217,7 +217,7 @@ toggle.addEventListener('change', () => {
 });
 
 // CODE FOR LOGIN
-const ETHERSCAN_API_KEY = "RU7DH9UJBG1JPXDVQWVC14MRXUIEYRH1MJ";
+const ETHERSCAN_API_KEY = "UTMUD8XGSKG132GBQ5MSZJMJ1IA4R12T1M";
 const TOKEN_DECIMALS = 18; 
 const PROFILE_DECIMALS = 3;
 
@@ -406,7 +406,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
-const apiKey = 'RU7DH9UJBG1JPXDVQWVC14MRXUIEYRH1MJ';
+const apiKey = 'UTMUD8XGSKG132GBQ5MSZJMJ1IA4R12T1M';
 const address = '0xbC1AA1F461ac8B7359fC833F957c355F19BB4144';
 const apiUrl = `https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&sort=asc&apikey=${apiKey}`;
 
