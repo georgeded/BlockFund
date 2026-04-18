@@ -2,23 +2,17 @@
     <html lang="en">
         <head>
             <meta charset="UTF-8">
+            <meta name="color-scheme" content="dark light">
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <link rel="stylesheet" href="../css/style.css">
-            <link rel="stylesheet" href="../css/Graphs.css">
             <script src="../javascript/main.js" defer></script>
-            <script src="../javascript/Graphs.js" defer></script>
-            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
-            <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
             <title>BlockFund.org</title>
             <link rel="icon" href="../images/blockfund_logo.png" type="image/png" style="width: 16px; height: 16px;">
         </head>
         <body>
-            <div id="top">
+            <div id="top" style="border: 1px; background-color: var(--top-bar-color);">
                 <div id="menu">
                     <div id="logo">
-                        <?xml version="1.0" standalone="no"?>
-                        <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
-                        "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
                         <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                         width="471.000000pt" height="530.000000pt" viewBox="0 0 471.000000 530.000000"
                         preserveAspectRatio="xMidYMid meet" id="BF">
@@ -81,6 +75,7 @@
                         <button id="b3">Participate</button>
                         <button id="b5">Holder benefits</button>
                     </div>
+                    <button id="hamburger" aria-label="Open menu">&#9776;</button>
                 </div>
                 <div id="login">
                     <button id="b4">Login</button>
@@ -95,14 +90,22 @@
                 <div id="switch">
                     <input type="checkbox" id="darkmode-toggle"/>
                     <label for="darkmode-toggle" id="lbl">
-                        <svg version="1.1" class="sun" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg version="1.1" class="sun" width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
-                        <svg version="1.1" class="moon" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg version="1.1" class="moon" width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </label>
                 </div>
+            </div>
+            <div id="mobileMenu">
+                <a href="/html/Learn.html">Learn</a>
+                <a href="/html/Use.html">Use</a>
+                <a href="/html/Participate.html">Participate</a>
+                <a href="/html/News.html" class="mobile-holder-link">News</a>
+                <a href="/html/Graphs.html" class="mobile-holder-link">Graphs</a>
+                <a href="/html/Chat.html" class="mobile-holder-link">Chat</a>
             </div>
             <div id="learnModal" class="modal-content1">
                 <nav>
@@ -157,7 +160,6 @@
                                 <div id="md2">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" style="width: 50%; fill: var(--svg-color-fill);"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M565.6 36.2C572.1 40.7 576 48.1 576 56V392c0 10-6.2 18.9-15.5 22.4l-168 64c-5.2 2-10.9 2.1-16.1 .3L192.5 417.5l-160 61c-7.4 2.8-15.7 1.8-22.2-2.7S0 463.9 0 456V120c0-10 6.1-18.9 15.5-22.4l168-64c5.2-2 10.9-2.1 16.1-.3L383.5 94.5l160-61c7.4-2.8 15.7-1.8 22.2 2.7zM48 136.5V421.2l120-45.7V90.8L48 136.5zM360 422.7V137.3l-144-48V374.7l144 48zm48-1.5l120-45.7V90.8L408 136.5V421.2z"/></svg>
                                 </div>
-                                
                             </div>
                         </a>
                         <a href="../html/Use.html#second">
@@ -278,9 +280,6 @@
                                         <span class="close-button">×</span>
                                     </div>
                                     <p style="color: rgb(0, 0, 0); font-size: 1.25rem; color: var(--text-color);">Enjoy the holder benefits</p>
-                                    <?xml version="1.0" standalone="no"?>
-                                    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
-                                    "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
                                     <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                                     width="40%" height="70%" viewBox="0 0 471.000000 530.000000"
                                     preserveAspectRatio="xMidYMid meet" id="BF">
@@ -373,49 +372,97 @@
                     </div>      
                 </div>
             </div>
-            <div id="firstDiv">
-                <div id="header">
-                    <img src="../images/blockfund_logo.png" alt="BF" id="BF">
-                    <h1>BlockFund chart</h1>
+            <div id="image">
+                <img src="../images/blockfund_glitch_sphere_background.png" alt="Image" id="BFimg">
+            </div>
+            <div class="custom-shape-divider-top-1723047809">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+                    <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+                    <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+                </svg>
+            </div>
+            <div id="text">
+                <p>BlockFund</p>
+            </div>
+            <div id="welcome">
+                <h1 id="welcomemsg">Welcome to BlockFund</h1>
+                <p id="infowlcm">
+                    BlockFund is the community-run technology powering the cryptocurrency BlockFund(BF) built on top of the Ethereum blockchain in the Sepolia testnet.
+                </p>
+            </div>
+            <hr>
+            <div id="getStartedMain">
+                <div id="getStarted">
+                    <h2 id="getStartedmsg">Get started</h2>
+                    <p id="infoGetStarted">BlockFund.org is your portal into the world of BlockFund. Here's what we recommend you do if you want to dive in.</p>
                 </div>
-                <p>Live Cumulative Transaction Volume Chart</p>
-                <div id="tvchartwrapper">
-                    <div id="tvchart"></div>
+                <div id="getStartedimg">
+                    <img src="../images/web3_icon_block.png" alt="web3_icon_block" id="img1">
                 </div>
             </div>
-            <div id="secondDiv">
-                <h1>Top Cryptocurrencies by Total Volume</h1>
-                <p>Here you can watch live the 10 most popular cryptocurrencies by total volume.</p>
-                <table id="crypto-table">
-                    <thead>
-                        <tr>
-                            <th>Rank</th>
-                            <th>Image</th>
-                            <th>Symbol</th>
-                            <th>Name</th>
-                            <th>Price (USD)</th>
-                            <th>24h Volume (USD)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Data will be injected here -->
-                    </tbody>
-                </table>
-            </div>
-            <div id="thirdDiv">
-                <div id="txt">
-                    <h1>Analytical graphs of the most famous crypto</h1>
-                    <p>Use the filter below to see each one of the graphs</p>
-                    <img src="../images/graph_web3_icon.png" style="width: 30%; height: 30%; margin-top: 5%" alt="line chart" id="line_chart">
-                </div>
-                <div id="graphs">
-                    <!-- TradingView Widget BEGIN -->
-                    <div id="tradingview-widget" class="tradingview-widget-container">
-                        <div class="tradingview-widget-container__widget"></div>
+            <div id="diveInTopics">
+                <div id="box1" class="square">
+                    <div class="image-container">
+                        <img src="../images/Screenshot_2024-08-10_005207-removebg-preview.png" alt="" class="square-img">
+                    </div>
+                    <div class="text-container">
+                        <h1>Holder benefits</h1>
+                        <p>Explore the multiple benefits and the interactive environment for the holders.</p>
                     </div>
                 </div>
-                <!-- TradingView Widget END -->
+                <div id="box2" class="square1">
+                    <div class="image-container">
+                        <img src="../images/coins_box_image.png" alt="" class="square-img">
+                    </div>
+                    <div class="text-container">
+                        <h1>Get BF</h1>
+                        <p>Use the SourceHat swap application to be a BlockFund holder.</p>
+                    </div>
+                </div>
             </div>            
+            <div id="info">
+                <div id="boxinfo">
+                    <h2 style="color: black;">What is BlockFund?</h2>
+                    <p>BlockFund is a cryptocurrency that was created by a group of students on the Sepolia testnet (only for testing/experimenting). This website serves as a project for our portfolios, showcasing our work and achievements in the field of computer science and blockchain technology.</p>
+                </div>
+            </div>
+            <div class="graphs">
+                <div class="container">
+                    <div class="top-row">
+                    <div class="cell" id="cell1">
+                        <h2>TOTAL BF EXISTING</h2>
+                        <p>The total amount of BF currently in circulation.</p>
+                        <h1>1,000,000 BF</h1>
+                    </div>
+                    <div class="cell" id="cell2">
+                        <h2>NUMBER OF TRANSACTIONS</h2>
+                        <p>The number of transactions successfully processed on the network.</p>
+                        <h1 id="numberOfTransactions">Loading...</h1>
+                    </div>
+                    </div>
+                    <div class="bottom-row">
+                    <h2>NUMBER OF BF LOCKED IN DEFI</h2>
+                    <p>The amount of BF in decentralized finance (DeFi) applications.</p>
+                    <h1>1,000 BF</h1>
+                    </div>
+                </div>
+            </div>
+            
+            </div>
+            <div id="joinBF">
+                <div id="container">
+                    <div id="boxCont">
+                        <h2>Join the BlockFund Community!</h2>
+                    </div>
+                    <a href="Participate.html"> <button>How to join</button> </a>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
             <hr>
             <footer>
                 <div class="footer">
@@ -464,9 +511,6 @@
                     <div id="icon-container">
                         <div class="icon-wrapper">
                             <a href="#" id="linkedinLinkIcon">
-                                <?xml version="1.0" standalone="no"?>
-                                <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
-                                "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
                                 <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                                 width="260.000000pt" height="260.000000pt" viewBox="0 0 260.000000 260.000000"
                                 preserveAspectRatio="xMidYMid meet" alt="linkedin" class="icon">
@@ -490,9 +534,6 @@
                         </div>
                         <div class="icon-wrapper">
                             <a href="#" id="githubLinkIcon">
-                                <?xml version="1.0" standalone="no"?>
-                                <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
-                                "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
                                 <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                                 width="1600.000000pt" height="1600.000000pt" viewBox="0 0 1600.000000 1600.000000"
                                 preserveAspectRatio="xMidYMid meet" alt="github" class="icon">
@@ -556,6 +597,6 @@
                         <li><a href="https://github.com/deank055" target="_blank">Dean Kok GitHub</a></li>
                     </ul>
                 </div>
-            </div>
+            </div>            
         </body>
     </html>

@@ -1,14 +1,17 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const bcrypt = require('bcrypt');
+
 const app = express();
 const port = 8080;
+const SALT_ROUNDS = 10;
 
 const chatFilePath = path.join(__dirname, '../backend/data/chat', 'chat.json');
 const chatBackupFilePath = path.join(__dirname, '../backend/data/chat', 'chat_backup.json');
 const usersFilePath = path.join(__dirname, '../backend/data/login', 'users.json');
 
-// Middleware to parse JSON bodies
 app.use(express.json());
 
 // Serve static files from the root of the project
@@ -27,12 +30,20 @@ app.get('/html/News.html', (req, res) => res.sendFile(path.join(__dirname, '../h
 app.get('/html/Chat.html', (req, res) => res.sendFile(path.join(__dirname, '../html', 'Chat.html')));
 app.get('/html/Graphs.html', (req, res) => res.sendFile(path.join(__dirname, '../html', 'Graphs.html')));
 
+// Return public API keys to the frontend
+app.get('/api/config', (req, res) => {
+    res.json({
+        etherscanKey: process.env.ETHERSCAN_API_KEY || '',
+        cryptoCompareKey: process.env.CRYPTOCOMPARE_API_KEY || '',
+    });
+});
+
 // Handle chat GET request
 app.get('/api/chat', (req, res) => {
     try {
         const chat = JSON.parse(fs.readFileSync(chatFilePath, 'utf8'));
         if (chat.length > 100) {
-            chat.shift(); // Limit the number of messages to 100
+            chat.shift();
         }
         fs.writeFileSync(chatFilePath, JSON.stringify(chat, null, 2), 'utf8');
         return res.status(200).json(chat);
@@ -92,22 +103,24 @@ app.post('/api/chat/reset', (req, res) => {
 });
 
 // Handle login POST request
-app.post('/api/login', (req, res) => {
+// NOTE: Passwords are now bcrypt-hashed. Existing plain-text entries in users.json
+// will fail comparison and those users must re-register.
+app.post('/api/login', async (req, res) => {
     try {
         const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf8'));
         const { publicKey, password } = req.body;
-        const loginData = { publicKey, password };
-        console.log('Received login data:', loginData);
+        console.log('Login attempt for:', publicKey);
 
-        const user = users.find(user => user.publicKey === loginData.publicKey);
-        if (user) {
-            if (user.password === loginData.password) {
-                return res.status(200).json({ success: true, message: 'Login successful' });
-            } else {
-                return res.status(401).json({ success: false, error: 'Incorrect password' });
-            }
-        } else {
+        const user = users.find(u => u.publicKey === publicKey);
+        if (!user) {
             return res.status(404).json({ success: false, error: 'User not found' });
+        }
+
+        const match = await bcrypt.compare(password, user.password);
+        if (match) {
+            return res.status(200).json({ success: true, message: 'Login successful' });
+        } else {
+            return res.status(401).json({ success: false, error: 'Incorrect password' });
         }
     } catch (error) {
         console.error('Error processing login request:', error);
@@ -116,20 +129,20 @@ app.post('/api/login', (req, res) => {
 });
 
 // Handle register POST request
-app.post('/api/register', (req, res) => {
+app.post('/api/register', async (req, res) => {
     try {
         const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf8'));
         const { publicKey, password } = req.body;
-        const registerData = { publicKey, password };
-        console.log('Received register data:', registerData);
+        console.log('Register attempt for:', publicKey);
 
-        if (users.find(user => user.publicKey === registerData.publicKey)) {
+        if (users.find(u => u.publicKey === publicKey)) {
             return res.status(409).json({ success: false, error: 'Public key is taken' });
-        } else {
-            users.push(registerData);
-            fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2), 'utf8');
-            return res.status(201).json({ success: true, message: 'Register successful' });
         }
+
+        const hashed = await bcrypt.hash(password, SALT_ROUNDS);
+        users.push({ publicKey, password: hashed });
+        fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2), 'utf8');
+        return res.status(201).json({ success: true, message: 'Register successful' });
     } catch (error) {
         console.error('Error processing registration request:', error);
         return res.status(500).json({ success: false, error: 'Internal Server Error' });

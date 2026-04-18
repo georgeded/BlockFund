@@ -1,3 +1,6 @@
+* { box-sizing: border-box; max-width: 100%; }
+body { overflow-x: hidden; }
+
 #firstDiv{
     margin-top: 5%;
     display: flex;

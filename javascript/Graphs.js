@@ -1,4 +1,18 @@
-document.addEventListener('DOMContentLoaded', function() {
+let ETHERSCAN_API_KEY = '';
+
+async function loadConfig() {
+    try {
+        const res = await fetch('/api/config');
+        const cfg = await res.json();
+        ETHERSCAN_API_KEY = cfg.etherscanKey || '';
+    } catch (e) {
+        console.error('Failed to load config:', e);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', async function() {
+    await loadConfig();
+
     const toggle = document.getElementById('darkmode-toggle');
     const darkMode = localStorage.getItem('darkMode') === 'true';
     toggle.checked = darkMode;
@@ -24,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
         domElement.innerHTML = '';
 
         const chartProperties = {
-            width: 887,
+            width: domElement.offsetWidth || 800,
             height: 500,
             timeScale: {
                 timeVisible: true,
@@ -62,9 +76,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     async function fetchAndProcessData() {
-        const apiKey = 'RU7DH9UJBG1JPXDVQWVC14MRXUIEYRH1MJ';
         const address = '0xbC1AA1F461ac8B7359fC833F957c355F19BB4144';
-        const apiUrl = `https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&sort=asc&apikey=${apiKey}`;
+        const apiUrl = `https://api-sepolia.etherscan.io/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&sort=asc&apikey=${ETHERSCAN_API_KEY}`;
 
         try {
             const response = await fetch(apiUrl);
@@ -131,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 ["CRYPTOCAP:USDT|All"]
             ],
             chartOnly: false,
-            width: "70%",
+            width: "100%",
             height: "500",
             locale: "en",
             colorTheme: isDarkMode ? 'dark' : 'light',

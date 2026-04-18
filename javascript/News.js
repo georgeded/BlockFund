@@ -1,3 +1,14 @@
+let CRYPTOCOMPARE_API_KEY = '';
+async function loadConfig() {
+    try {
+        const res = await fetch('/api/config');
+        const cfg = await res.json();
+        CRYPTOCOMPARE_API_KEY = cfg.cryptoCompareKey || '';
+    } catch (e) {
+        console.error('Failed to load config:', e);
+    }
+}
+
 const url = "https://min-api.cryptocompare.com/data/v2/news/?lang=EN";
         const fetchInterval = 60000;
         const articlesPerPage = 15;
@@ -92,8 +103,8 @@ const url = "https://min-api.cryptocompare.com/data/v2/news/?lang=EN";
             }
         }
 
-        // Fetch news initially
-        fetchCryptoNews();
-
-        // Set up interval to fetch news continuously
-        setInterval(fetchCryptoNews, fetchInterval);
+        // Fetch news initially (after config loads)
+        loadConfig().then(() => {
+            fetchCryptoNews();
+            setInterval(fetchCryptoNews, fetchInterval);
+        });

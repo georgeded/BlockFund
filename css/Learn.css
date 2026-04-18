@@ -1,3 +1,6 @@
+* { box-sizing: border-box; max-width: 100%; }
+body { overflow-x: hidden; }
+
 #firstDiv{
     width: 100%;
     height: auto;

@@ -2,11 +2,11 @@
     <html lang="en">
         <head>
             <meta charset="UTF-8">
-            <meta name="color-scheme" content="dark light">
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <link rel="stylesheet" href="../css/style.css">
-            <link rel="stylesheet" href="../css/Learn.css">
+            <link rel="stylesheet" href="../css/chat.css">
             <script src="../javascript/main.js" defer></script>
+            <script src="../javascript/chat.js" defer></script>
             <title>BlockFund.org</title>
             <link rel="icon" href="../images/blockfund_logo.png" type="image/png" style="width: 16px; height: 16px;">
         </head>
@@ -14,9 +14,6 @@
             <div id="top">
                 <div id="menu">
                     <div id="logo">
-                        <?xml version="1.0" standalone="no"?>
-                        <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
-                        "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
                         <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                         width="471.000000pt" height="530.000000pt" viewBox="0 0 471.000000 530.000000"
                         preserveAspectRatio="xMidYMid meet" id="BF">
@@ -79,6 +76,7 @@
                         <button id="b3">Participate</button>
                         <button id="b5">Holder benefits</button>
                     </div>
+                    <button id="hamburger" aria-label="Open menu">&#9776;</button>
                 </div>
                 <div id="login">
                     <button id="b4">Login</button>
@@ -93,14 +91,22 @@
                 <div id="switch">
                     <input type="checkbox" id="darkmode-toggle"/>
                     <label for="darkmode-toggle" id="lbl">
-                        <svg version="1.1" class="sun" width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg version="1.1" class="sun" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
-                        <svg version="1.1" class="moon" width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg version="1.1" class="moon" width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </label>
                 </div>
+            </div>
+            <div id="mobileMenu">
+                <a href="/html/Learn.html">Learn</a>
+                <a href="/html/Use.html">Use</a>
+                <a href="/html/Participate.html">Participate</a>
+                <a href="/html/News.html" class="mobile-holder-link">News</a>
+                <a href="/html/Graphs.html" class="mobile-holder-link">Graphs</a>
+                <a href="/html/Chat.html" class="mobile-holder-link">Chat</a>
             </div>
             <div id="learnModal" class="modal-content1">
                 <nav>
@@ -143,7 +149,6 @@
                     </ul>
                 </nav>
             </div>
-            
             <div id="useModal" class="modal-content1">
                 <nav>
                     <ul role="list" id="list">
@@ -186,7 +191,6 @@
                     </ul>
                 </nav>
             </div>
-            
             <div id="participateModal" class="modal-content1">
                 <nav>
                     <ul role="list" id="list">
@@ -278,9 +282,6 @@
                                         <span class="close-button">×</span>
                                     </div>
                                     <p style="color: rgb(0, 0, 0); font-size: 1.25rem; color: var(--text-color);">Enjoy the holder benefits</p>
-                                    <?xml version="1.0" standalone="no"?>
-                                    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
-                                    "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
                                     <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                                     width="40%" height="70%" viewBox="0 0 471.000000 530.000000"
                                     preserveAspectRatio="xMidYMid meet" id="BF">
@@ -374,112 +375,20 @@
                 </div>
             </div>
             <div id="firstDiv">
-                <div style="margin-bottom: 5%;">
-                    <h1 id="topL">Technology behind this website</h1>
-                    <p>BlockFund is a crypto coin created on top of ethereum testnet (Sepolia). This website is developed totally around blockfund. </p>
-                </div>
-                <div class="boxes" style="margin-top: 10%;">
-                    <div>
-                        <p style="margin:6.5%">A user can read information about the coin and the whole project behind it.</p>
-                        <image src="../images/blockchain_web3_image.png" alt="coin" style="width: 60%; height: 70%;">
+                <h1>BlockFund group chat</h1>
+                <div id="chatwindow">
+                    <div id="textwindow">
+                        <div id="textwindow" class="message-container">
+                        </div>
                     </div>
-                    <div>
-                        <p style="margin:4%; margin-top: 4%;">Also can be a BF holder using the SourceHat swap application.</p>
-                        <image src="../images/crypto_globe_image.png" alt="coin" style="width: 60%; height: 70%; margin-top: 5%;">
+                    <div id="inputwindow">
+                        <div id="coordinator-controls" style="display: none;">
+                            <button id="delete-messages" class="tooltip"><span class="tooltiptext">Delete all the messages</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="width: 50%; fill:var(--svg-color-fill);">!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.<path d="M135.2 17.7L128 32 32 32C14.3 32 0 46.3 0 64S14.3 96 32 96l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-96 0-7.2-14.3C307.4 6.8 296.3 0 284.2 0L163.8 0c-12.1 0-23.2 6.8-28.6 17.7zM416 128L32 128 53.2 467c1.6 25.3 22.6 45 47.9 45l245.8 0c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg></button>
+                            <button id="reset-messages" class="tooltip" ><span class="tooltiptext">Reset the old messages</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" style="width: 60%; fill:var(--svg-color-fill);"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M272 416c17.7 0 32-14.3 32-32s-14.3-32-32-32l-112 0c-17.7 0-32-14.3-32-32l0-128 32 0c12.9 0 24.6-7.8 29.6-19.8s2.2-25.7-6.9-34.9l-64-64c-12.5-12.5-32.8-12.5-45.3 0l-64 64c-9.2 9.2-11.9 22.9-6.9 34.9s16.6 19.8 29.6 19.8l32 0 0 128c0 53 43 96 96 96l112 0zM304 96c-17.7 0-32 14.3-32 32s14.3 32 32 32l112 0c17.7 0 32 14.3 32 32l0 128-32 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l64 64c12.5 12.5 32.8 12.5 45.3 0l64-64c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8l-32 0 0-128c0-53-43-96-96-96L304 96z"/></svg></button>                 
+                        </div>
+                        <input type="text" id="chatinput" placeholder="Write your message...">
+                        <button id="send"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="width: 60%; fill:var(--svg-color-fill);"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M16.1 260.2c-22.6 12.9-20.5 47.3 3.6 57.3L160 376l0 103.3c0 18.1 14.6 32.7 32.7 32.7c9.7 0 18.9-4.3 25.1-11.8l62-74.3 123.9 51.6c18.9 7.9 40.8-4.5 43.9-24.7l64-416c1.9-12.1-3.4-24.3-13.5-31.2s-23.3-7.5-34-1.4l-448 256zm52.1 25.5L409.7 90.6 190.1 336l1.2 1L68.2 285.7zM403.3 425.4L236.7 355.9 450.8 116.6 403.3 425.4z"/></svg></button>	
                     </div>
-                </div>
-                <div class="boxes1">
-                    <div>
-                        <p style="margin:5%">If the user is already a holder to login and enjoy the holder benefits.</p>
-                        <image src="../images/bank_image.png" alt="coin" style="width: 60%; height: 70%; "></image>
-                    </div>
-                </div>
-                <div style="text-align: left; margin-top: 5%; margin-left: 2.5%; margin-bottom: 2.5%;" >
-                    <h2>Disclaimer:</h2>
-                    <p>This project was created only for experimental reasons around blockchain technologies.</p>
-                </div>
-            </div>
-            <hr>
-            <div id="secondDiv">
-                <div id="second"> 
-                    <h1>Holder Benefits</h1>
-                    <p style="color: var(--text-lighter);">You can now login the website using only your public Key (if you are BF holder).</p>
-                </div>
-                <div id="second1">
-                    <ul role="list">
-                        <li>Watch the most recent news on crypto comunity</li>
-                        <li>Have access to famous crypto coins live graphs</li>
-                        <li>Chat with all the holders and the coordinators of the project through a live group chat</li>
-                    </ul>
-                </div>
-            </div>
-            <hr>
-            <div id="thirdDiv">
-                <div id="divImg">
-                    <img src="../images/cube_metaverse_icon.png" alt="BF">
-                </div>
-                <div id="third">
-                    <h1>How to get BF?</h1>
-                    <?xml version="1.0" standalone="no"?>
-                    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
-                    "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-                    <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
-                    width="10%" height="10%" viewBox="0 0 471.000000 530.000000"
-                    preserveAspectRatio="xMidYMid meet">
-
-                    <g transform="translate(0.000000,530.000000) scale(0.100000,-0.100000)"
-                    fill="var(--text-color)" stroke="none">
-                    <path d="M2200 5160 c-25 -15 -147 -82 -270 -150 -124 -67 -270 -148 -325
-                    -180 -55 -31 -179 -101 -275 -155 -96 -53 -231 -129 -300 -168 -69 -39 -172
-                    -98 -230 -130 -206 -117 -416 -231 -457 -249 l-43 -19 0 -1473 0 -1473 68 -31
-                    c85 -39 239 -122 412 -221 74 -43 194 -111 265 -151 253 -142 661 -374 765
-                    -435 58 -34 168 -95 245 -135 77 -40 148 -78 158 -84 14 -9 25 -7 50 8 17 11
-                    77 44 132 74 55 30 172 94 260 142 88 48 241 131 340 185 99 54 216 119 260
-                    145 44 27 121 70 170 97 50 27 205 113 345 190 140 77 284 155 319 173 l64 32
-                    -7 105 c-3 59 -6 362 -6 676 l0 569 -37 -31 c-21 -17 -88 -69 -149 -116 -61
-                    -46 -114 -92 -118 -102 -4 -10 -9 -218 -12 -463 l-4 -445 -38 -26 c-20 -15
-                    -118 -73 -217 -129 -99 -56 -232 -133 -295 -170 -63 -37 -196 -111 -295 -165
-                    -99 -54 -216 -119 -260 -145 -44 -25 -123 -68 -175 -94 -52 -27 -99 -52 -105
-                    -56 -5 -4 -52 -31 -103 -59 l-94 -52 -196 105 c-108 57 -237 128 -287 158 -49
-                    30 -169 99 -265 153 -96 54 -242 137 -325 185 -202 118 -363 208 -463 260
-                    l-82 42 0 1282 0 1282 74 33 c40 18 156 80 257 138 101 58 270 153 374 211
-                    105 57 269 150 365 205 96 55 243 137 325 182 83 45 167 92 187 103 l38 22
-                    192 -104 c106 -57 231 -126 278 -153 47 -28 157 -91 245 -140 88 -49 183 -103
-                    210 -120 140 -86 289 -173 468 -275 l197 -113 -2 -480 c-3 -475 -3 -480 -25
-                    -515 -24 -38 -110 -117 -188 -172 -92 -64 -107 -58 -76 30 49 144 56 234 53
-                    692 l-2 305 -83 42 c-45 23 -111 62 -147 85 -290 190 -672 412 -977 568 l-142
-                    72 -30 -22 c-17 -12 -91 -50 -165 -86 -74 -35 -206 -106 -293 -156 -87 -50
-                    -202 -116 -255 -146 l-98 -54 -1 -1227 c-1 -674 -4 -1320 -8 -1436 -4 -139 -3
-                    -214 4 -222 5 -6 84 -51 175 -99 91 -48 219 -117 285 -154 66 -37 161 -88 210
-                    -114 50 -25 111 -57 136 -72 l46 -26 114 65 c63 35 204 110 314 167 200 103
-                    342 184 635 360 85 51 180 104 210 116 41 17 56 29 62 49 4 15 7 176 8 358 1
-                    183 4 387 7 454 l6 123 46 29 c25 16 73 40 106 52 177 65 312 221 376 437 20
-                    64 17 1182 -2 1182 -7 0 -62 29 -123 64 -61 35 -174 98 -251 141 -161 89 -454
-                    258 -735 423 -304 179 -350 206 -425 247 -38 21 -125 71 -193 112 -68 40 -131
-                    77 -140 82 -12 6 -30 0 -62 -19z m206 -1059 c183 -60 430 -184 548 -274 55
-                    -42 119 -100 143 -129 48 -59 111 -175 148 -271 33 -88 49 -248 36 -353 -17
-                    -133 -95 -313 -176 -402 l-42 -46 45 -61 c59 -80 62 -87 118 -255 l49 -145 0
-                    -160 c0 -185 -12 -239 -77 -349 -91 -154 -293 -316 -526 -421 -200 -91 -463
-                    -130 -584 -87 -65 23 -316 162 -352 195 l-24 22 9 165 c9 160 4 2039 -6 2210
-                    -8 141 -9 140 135 232 69 45 141 88 160 96 39 17 236 71 261 72 9 0 70 -18
-                    135 -39z"/>
-                    <path d="M2115 3840 c-82 -4 -158 -8 -167 -9 -16 -1 -18 -16 -18 -155 l0 -155
-                    53 -5 c28 -3 153 -10 277 -14 252 -10 271 -14 344 -82 66 -61 90 -128 90 -250
-                    -1 -153 -53 -254 -161 -312 -69 -38 -111 -45 -333 -58 -107 -6 -211 -13 -231
-                    -16 l-37 -5 -4 -162 c-3 -89 -4 -163 -3 -165 1 -1 116 -6 256 -10 l255 -8 65
-                    -31 c122 -57 179 -130 199 -257 12 -78 -1 -176 -32 -244 -25 -52 -107 -128
-                    -156 -143 -20 -6 -149 -15 -287 -20 -137 -5 -260 -11 -273 -14 -22 -5 -22 -7
-                    -20 -157 l3 -152 30 -9 c17 -6 138 -10 270 -11 240 -1 240 -1 308 27 237 96
-                    325 172 422 364 59 119 75 217 57 358 -13 105 -51 227 -90 295 -32 54 -155
-                    180 -177 180 -27 0 -16 22 43 86 88 95 138 173 179 275 36 91 37 98 37 224 0
-                    144 -16 208 -77 315 -100 176 -342 311 -577 322 -52 3 -162 2 -245 -2z"/>
-                    <path d="M1100 3914 c-19 -14 -78 -48 -130 -76 -52 -28 -101 -58 -107 -66 -10
-                    -13 -13 -258 -13 -1156 l1 -1141 101 -50 c56 -27 126 -64 155 -82 l54 -32 -3
-                    1311 c-2 863 -6 1312 -13 1314 -5 2 -26 -8 -45 -22z"/>
-                    </g>
-                    </svg>
-                    <p style="margin-top: 5%;">As it is mentioned before BF is built on top of ethereum Sepolia-testnet so it doesnt have any real value. So the easiest way to get BF is to trade the ethereum testnet sepolia coin with BF throught our <a href="../html/Use.html#secondDivUse"><u>new DeFi liquidity pool</u></a>.</p>
-                    <button onclick="window.location.href='../html/Use.html#thirdDivUse';">How to get Sepolia</button>
                 </div>
             </div>
             <hr>
@@ -530,9 +439,6 @@
                     <div id="icon-container">
                         <div class="icon-wrapper">
                             <a href="#" id="linkedinLinkIcon">
-                                <?xml version="1.0" standalone="no"?>
-                                <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
-                                "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
                                 <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                                 width="260.000000pt" height="260.000000pt" viewBox="0 0 260.000000 260.000000"
                                 preserveAspectRatio="xMidYMid meet" alt="linkedin" class="icon">
@@ -556,9 +462,6 @@
                         </div>
                         <div class="icon-wrapper">
                             <a href="#" id="githubLinkIcon">
-                                <?xml version="1.0" standalone="no"?>
-                                <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
-                                "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
                                 <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                                 width="1600.000000pt" height="1600.000000pt" viewBox="0 0 1600.000000 1600.000000"
                                 preserveAspectRatio="xMidYMid meet" alt="github" class="icon">
