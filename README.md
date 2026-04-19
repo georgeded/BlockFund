@@ -1,67 +1,53 @@
-# BlockFund Project
+# BlockFund
 
-Welcome to the **BlockFund Project**, an experimental and educational initiative focusing on blockchain technology and decentralized finance (DeFi). 
+A full-stack blockchain web application built on the Ethereum **Sepolia testnet**. Created as a portfolio project to explore Web3 development, DeFi mechanics, and real-time cryptocurrency data.
 
-> **Note**: At the moment, only the desktop version of the application is available.
-
-## Overview
-The BlockFund project operates entirely on the Ethereum testnet, using Sepolia coins for simulation purposes. It is a risk-free environment for exploring blockchain applications and enhancing technical knowledge. This project is strictly educational and holds no monetary value.
-
-Key features include:
-- A **DeFi Swap Application** to trade Sepolia coins for BlockFund coins.
-- **Real-time cryptocurrency news** and live performance graphs of major cryptocurrencies.
-- A **login system** integrated with Etherscan to provide exclusive features for BlockFund coin holders.
-- A **group chat** for live communication among holders and coordinators.
-
-**Visit the project online at:** [https://blockfund.onrender.com/](https://blockfund.onrender.com/)
+🌐 **Live demo:** https://blockfund.onrender.com
 
 ## Features
-### Website
-- Central hub for all activities and resources.
-- Developed for desktop browsers.
 
-### DeFi Swap Application
-- Allows trading Sepolia coins for BlockFund coins.
-- Requires a MetaMask wallet for transactions.
+- 🔐 **Wallet-based login** — authenticate using your Ethereum public key, verified on-chain via the Etherscan API
+- 📰 **Live crypto news** — real-time news feed powered by the CryptoCompare API (holders only)
+- 📈 **Live charts** — BF transaction history chart + TradingView widgets for BTC, ETH, SOL and more (holders only)
+- 💬 **Group chat** — real-time chat room for BF token holders
+- 🔄 **DeFi swap** — swap Sepolia ETH for BF tokens via a SourceHat liquidity pool
+- 🌙 **Dark/light mode** — persistent theme toggle across all pages
 
-### Login System
-- Authenticate and register using your public key.
-- Exclusive access to features for BlockFund coin holders.
+## Tech Stack
 
-### Holder Benefits
-- Access the latest crypto news via the CryptoCompare API.
-- View live graphs and analytics for major cryptocurrencies.
-- Join a live group chat with other holders and project coordinators.
+| Layer | Technology |
+|---|---|
+| Frontend | HTML, CSS, JavaScript |
+| Backend | Node.js, Express |
+| Blockchain | Ethereum Sepolia Testnet (ERC-20) |
+| APIs | Etherscan API, CryptoCompare API, TradingView |
+| Deployment | Render |
 
-## How to Get Started
-1. **Visit the website** at [https://blockfund.onrender.com/](https://blockfund.onrender.com/) and familiarize yourself with the project documentation.
-2. **Prepare your MetaMask wallet** with Sepolia coins.
-3. **Trade Sepolia coins for BlockFund coins** using the DeFi Swap application.
-4. **Register your wallet** to gain access to exclusive features.
-5. **Explore the platform**, stay updated, and interact with the community.
+## Token Details
 
-For more detailed instructions, refer to the official documentation.
+- **Name:** BlockFund (BF)
+- **Network:** Ethereum Sepolia Testnet
+- **Contract:** `0xbC1AA1F461ac8B7359fC833F957c355F19BB4144`
+- **Total supply:** 1,000,000 BF
+- **Value:** None — strictly educational
 
-## Challenges
-The project team faced challenges in front-end design, blockchain integration, and backend functionalities like live chat. Through continuous learning, collaboration, and determination, these challenges were successfully overcome.
+## Local Setup
 
-## Resources
-The project uses:
-- [Etherscan API](https://etherscan.io) for blockchain data.
-- [TradingView API](https://www.tradingview.com) for live charts.
-- [CryptoCompare API](https://cryptocompare.com) for crypto news and data.
-- Additional tools and inspirations detailed in the project documentation.
+```bash
+git clone https://github.com/georgeded/BlockFund.git
+cd BlockFund/BlockFund-main/backend
+npm install
+node server.js
+```
 
-## Project Coordinators
-- **George Dedempilis**  
-  [GitHub](https://github.com/georgeded) | [LinkedIn](https://www.linkedin.com/in/george-dedempilis-727217244/)
-- **Dean Kok**  
-  [GitHub](https://github.com/deank055) | [LinkedIn](https://www.linkedin.com/in/dean-kok-846aaa273/)
+Open http://localhost:8080
 
-## Disclaimer
-The BlockFund project is for educational purposes only. All activities and tokens operate on the Ethereum testnet and hold no monetary value. The project is not intended for real investment or commercial use.
+## Authors
+
+**Georgios Dedempilis** — [LinkedIn](https://www.linkedin.com/in/georgios-dedempilis) · [GitHub](https://github.com/georgeded)
+
+**Dean Kok** — [LinkedIn](https://www.linkedin.com/in/dean-kok) · [GitHub](https://github.com/DeanKok)
 
 ---
 
-Feel free to share any feedback or contribute to the project!
-
+*This project was built for educational purposes only and holds no monetary value.*
